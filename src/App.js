@@ -1,25 +1,27 @@
-import logo from './logo.svg';
+import { useState } from 'react';
 import './App.css';
+import LoginFrom from './component/Login';
+import RegisterForm from './component/RegistreForm';
+
 
 function App() {
+
+  const [form , setForm] = useState('loginForm')
+
+  const changeForm = (formName)=>{
+    setForm(formName)
+  }
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      {
+       form ==='loginForm' ?  
+        <LoginFrom swithForm={changeForm} /> :
+         <RegisterForm swithForm={changeForm} />
+      }
+     
+      
     </div>
   );
 }
-
 export default App;
